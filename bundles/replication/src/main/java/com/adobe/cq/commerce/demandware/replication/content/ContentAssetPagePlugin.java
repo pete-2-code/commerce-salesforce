@@ -77,11 +77,6 @@ public class ContentAssetPagePlugin extends AbstractContentBuilderPlugin {
     private String defaultContentLibrary;
     private List<AttributeDescriptor> attributeDescriptors;
 
-    @Reference(service = AttributeToJsonConverter.class,
-            cardinality = ReferenceCardinality.MULTIPLE,
-            policy = DYNAMIC,
-            policyOption = GREEDY,
-            bind = "bindAttrConverter", unbind = "unbindAttrConverter")
     private RankedServices<AttributeToJsonConverter> attributeConverters =
             new RankedServices<>(Order.ASCENDING);
 
@@ -199,6 +194,10 @@ public class ContentAssetPagePlugin extends AbstractContentBuilderPlugin {
                 .fromOsgiConfig(config.attributes_mapping());
     }
 
+    @Reference(service = AttributeToJsonConverter.class,
+            cardinality = ReferenceCardinality.MULTIPLE,
+            policy = DYNAMIC,
+            policyOption = GREEDY)
     private void bindAttrConverter(AttributeToJsonConverter conv, Map<String, Object> props) {
         attributeConverters.bind(conv, props);
     }

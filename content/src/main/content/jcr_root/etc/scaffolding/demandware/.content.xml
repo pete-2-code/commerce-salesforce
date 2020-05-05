@@ -20,7 +20,6 @@
         cq:commerceType="demandware"
         jcr:primaryType="cq:PageContent"
         jcr:title="Demandware Scaffolding Library"/>
-    <clientlibs-classic/>
     <clientlibs-touch/>
     <product/>
 </jcr:root>

@@ -26,11 +26,6 @@ import java.util.*;
 @Component(service = DwreFolderAttributesLookupService.class)
 public class DwreFolderAttributesLookupService {
 
-    @Reference(service = DwreFolderAttributesAssignment.class,
-            cardinality = ReferenceCardinality.MULTIPLE,
-            policy = ReferencePolicy.DYNAMIC,
-            policyOption = ReferencePolicyOption.GREEDY,
-            bind = "bindAttrAssignment", unbind = "unbindAttrAssignment")
     private RankedServices<DwreFolderAttributesAssignment> assignments =
             new RankedServices<>(Order.ASCENDING);
 
@@ -58,6 +53,10 @@ public class DwreFolderAttributesLookupService {
                 : new ArrayList<>(descriptors);
     }
 
+    @Reference(service = DwreFolderAttributesAssignment.class,
+            cardinality = ReferenceCardinality.MULTIPLE,
+            policy = ReferencePolicy.DYNAMIC,
+            policyOption = ReferencePolicyOption.GREEDY)
     private void bindAttrAssignment(DwreFolderAttributesAssignment assignment, Map<String, Object> props) {
         assignments.bind(assignment, props);
     }

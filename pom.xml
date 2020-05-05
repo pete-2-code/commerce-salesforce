@@ -34,7 +34,7 @@
     <packaging>pom</packaging>
     
     <name>AEM/Demandware - Reactor Project</name>
-    <description>Maven multi module project for Adobe AEM Commerce Salesforce integration.</description>
+    <description>Integrates Salesforce CC into Adobe AEM.</description>
 
     <!-- ====================================================================== -->
     <!-- M O D U L E S                                                          -->
